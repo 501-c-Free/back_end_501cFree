@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_222851) do
+ActiveRecord::Schema.define(version: 2022_04_12_224749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2022_04_12_222851) do
 
   create_table "projects", force: :cascade do |t|
     t.text "description"
+    t.bigint "non_profit_id"
+    t.index ["non_profit_id"], name: "index_projects_on_non_profit_id"
   end
 
   create_table "representatives", force: :cascade do |t|
@@ -49,5 +51,6 @@ ActiveRecord::Schema.define(version: 2022_04_12_222851) do
   add_foreign_key "non_profits", "projects"
   add_foreign_key "project_developers", "developers"
   add_foreign_key "project_developers", "projects"
+  add_foreign_key "projects", "non_profits"
   add_foreign_key "representatives", "non_profits"
 end

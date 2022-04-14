@@ -37,10 +37,12 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'factory_bot_rails'
+  gem 'webmock'
   gem 'faker'
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'vcr'
 end
 
 group :development do

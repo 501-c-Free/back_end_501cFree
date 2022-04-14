@@ -1,7 +1,4 @@
 class NonProfit < ApplicationRecord
-    # is this finalized? 
-    has_one :project 
-    has_many :project_developers, through: :project
-    has_one :representative
-    validates :name, :city, :state, presence: true
+    has_many :projects
+    validates :representative_name, :representative_email, presence: true
 end

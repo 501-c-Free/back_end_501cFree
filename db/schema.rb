@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_224749) do
+ActiveRecord::Schema.define(version: 2022_04_13_234349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,16 @@ ActiveRecord::Schema.define(version: 2022_04_12_224749) do
   create_table "developers", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "github"
+    t.string "linkedin"
   end
 
   create_table "non_profits", force: :cascade do |t|
-    t.string "name"
+    t.string "non_profit_name"
     t.string "city"
     t.string "state"
-    t.bigint "project_id"
-    t.index ["project_id"], name: "index_non_profits_on_project_id"
+    t.string "representative_name"
+    t.string "representative_email"
   end
 
   create_table "project_developers", force: :cascade do |t|
@@ -36,21 +38,27 @@ ActiveRecord::Schema.define(version: 2022_04_12_224749) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.string "project_name"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "non_profit_id"
     t.index ["non_profit_id"], name: "index_projects_on_non_profit_id"
   end
 
-  create_table "representatives", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.integer "type_of_user"
+    t.bigint "developer_id"
     t.bigint "non_profit_id"
-    t.index ["non_profit_id"], name: "index_representatives_on_non_profit_id"
+    t.index ["developer_id"], name: "index_users_on_developer_id"
+    t.index ["non_profit_id"], name: "index_users_on_non_profit_id"
   end
 
-  add_foreign_key "non_profits", "projects"
   add_foreign_key "project_developers", "developers"
   add_foreign_key "project_developers", "projects"
   add_foreign_key "projects", "non_profits"
-  add_foreign_key "representatives", "non_profits"
+  add_foreign_key "users", "developers"
+  add_foreign_key "users", "non_profits"
 end

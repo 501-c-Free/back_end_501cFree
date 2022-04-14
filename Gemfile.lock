@@ -173,6 +173,10 @@ GEM
       parser (>= 3.1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
+
+    rspec_junit_formatter (0.5.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
+
     ruby_dep (1.5.0)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
@@ -220,15 +224,19 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.7)
   rspec-rails
+
   rubocop
   shoulda-matchers (~> 5.0)
+
+  rspec_junit_formatter
+
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.7.4p191
 
 BUNDLED WITH
    2.1.4

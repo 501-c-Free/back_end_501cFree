@@ -23,5 +23,8 @@
 /config/master.key
 coverage
 
+#ignore fixtures 
+/spec/fixtures
+
 # Ignore application configuration
 /config/application.yml

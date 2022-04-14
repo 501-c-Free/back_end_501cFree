@@ -138,6 +138,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    rspec_junit_formatter (0.5.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby_dep (1.5.0)
     simplecov (0.21.2)
       docile (~> 1.1)
@@ -178,13 +180,14 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.7)
   rspec-rails
+  rspec_junit_formatter
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.7.4p191
 
 BUNDLED WITH
    2.1.4

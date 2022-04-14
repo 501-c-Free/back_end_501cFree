@@ -10,4 +10,9 @@ class CharityNavigatorService
         response = conn.get("organizations?search=#{search}")
         json = JSON.parse(response.body, symbolize_names: true)
     end
+    
+    def self.one_charity(ein)
+        response = conn.get("organizations/#{ein}")
+        json = JSON.parse(response.body, symbolize_names: true)
+    end
 end

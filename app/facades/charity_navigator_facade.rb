@@ -6,4 +6,8 @@ class CharityNavigatorFacade
             NGO.new(data)
         end
     end
+
+    def self.one_charity(ein)
+        NGO.new(CharityNavigatorService.one_charity(ein))
+    end
 end

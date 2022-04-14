@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+require '../../app/poros/ngo' 
 RSpec.describe 'NGO' do 
   it 'will create an NGO object' do
     data = {

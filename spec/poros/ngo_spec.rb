@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe NGO do 
+RSpec.describe 'NGO' do 
   it 'will create an NGO object' do
     data = {
                 mission: 'Do good!', 

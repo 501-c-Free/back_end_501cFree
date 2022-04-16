@@ -1,15 +1,16 @@
-class SessionsController < ApplicationController 
+class Api::V1::SessionsController < ApplicationController
     def create
-        user = User.find_by(email: params[:email])
+        # could get access token here if needed. Will be posted in request. 
+        user = User.find_by(email: JSON.parse(params[:email]))
         if user 
-            session[:user_id] = user.id
+            session[:user_id] = user.id # tinker
             render json: {
-                status: :created, 
+                status: :session_created, 
                 logged_in: true, 
                 user: user
             }
         else 
-            render json: {status: 401}
+            redirect_to("http://localhost:5000/user_choice", flash: "Please Sign Up first!")
         end
     end
     

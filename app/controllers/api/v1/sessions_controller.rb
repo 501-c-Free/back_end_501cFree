@@ -1,7 +1,5 @@
 class Api::V1::SessionsController < ApplicationController
     def create
-      #binding.pry
-        # could get access token here if needed. Will be posted in request.
         user = User.find_by(email: (params[:email]))
         if user
             session[:user_id] = user.id # tinker

@@ -1,8 +1,10 @@
 class Api::V1::NonProfitsController < ApplicationController
     def create
         charity = CharityNavigatorFacade.one_charity(params[:ein])
-        if charity.nil?
+        if response.body == ''
+            render json: {error: 'not found'}
         else 
+            # create project here
             user = User.find(params[:current_user])
             non_profit = user.non_profit
             non_profit.non_profit_name = charity.charity_name
@@ -18,7 +20,11 @@ class Api::V1::NonProfitsController < ApplicationController
             non_profit.charity_info_url = charity.charity_info_url
             non_profit.country = charity.country
             non_profit.save
+            render json: CharityNavigatorFacade.one_charity(params[:ein])
         end
-        render json: CharityNavigatorFacade.one_charity(params[:ein])
+    end
+
+    def show 
+        render json: User.find(params[:id]).non_profit
     end
 end

@@ -18,9 +18,9 @@ RSpec.describe CharityNavigatorFacade do
             expect(facade.first.state).to eq("IA")
             expect(facade.first.city).to eq("Red Oak")
             expect(facade.first.zipcode).to eq("51566-4300")
-            expect(facade.first.street_adress).to eq("307 East Reed Street")
+            expect(facade.first.street_address).to eq("307 East Reed Street")
             expect(facade.first.country).to eq("USA")
-            expect(facade.first.category).to eq("Promotion of Business")
+            expect(facade.first.category).to eq("Community Improvement, Capacity Building")
         end
         it 'will return all the data for one charity given a EIN', :vcr do 
             facade = CharityNavigatorFacade.one_charity('270823236')
@@ -33,9 +33,9 @@ RSpec.describe CharityNavigatorFacade do
             expect(facade.state).to eq("IA")
             expect(facade.city).to eq("Red Oak")
             expect(facade.zipcode).to eq("51566-4300")
-            expect(facade.street_adress).to eq("307 East Reed Street")
+            expect(facade.street_address).to eq("307 East Reed Street")
             expect(facade.country).to eq("USA")
-            expect(facade.category).to eq("Promotion of Business")
+            expect(facade.category).to eq("Community Improvement, Capacity Building")
         end
     end
 end

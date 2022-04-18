@@ -1,5 +1,5 @@
 class NGO 
-    attr_reader :mission, :charity_info_url, :tagline, :website_url, :charity_name, :ein, :state, :city, :zipcode, :street_adress, :country, :category
+    attr_reader :mission, :charity_info_url, :tagline, :website_url, :charity_name, :ein, :state, :city, :zipcode, :street_address, :country, :category
     def initialize(data) 
         @mission = data[:mission]
         @charity_info_url = data[:charityNavigatorURL]
@@ -10,7 +10,7 @@ class NGO
         @state = data[:mailingAddress][:stateOrProvince]
         @city = data[:mailingAddress][:city].titleize
         @zipcode = data[:mailingAddress][:postalCode]
-        @street_adress = data[:mailingAddress][:streetAddress1].titleize
+        @street_address = data[:mailingAddress][:streetAddress1].titleize
         @country = data[:mailingAddress][:country].nil? ? "USA" : data[:mailingAddress][:country]
         @category = data[:irsClassification][:nteeClassification]
     end

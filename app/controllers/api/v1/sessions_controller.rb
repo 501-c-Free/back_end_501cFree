@@ -9,7 +9,14 @@ class Api::V1::SessionsController < ApplicationController
                 user: user
             }
         else
-            redirect_to("http://localhost:5000/user_choice", flash: "Please Sign Up first!")
+            # making new user
+            user = User.create!(email: params[:email], name: params[:name])
+            session[:user_id] = user.id
+            render json: {
+                            status: :user_created,
+                            logged_in: true,
+                            user: user
+            }
         end
     end
 

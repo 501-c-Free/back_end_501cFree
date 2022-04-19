@@ -36,7 +36,7 @@ This application uses a PostgresQL database to store Customer and Subscription i
 - Rails 5.2.6
 
 #### Development
-![Atom][Atom-img]
+[Atom][Atom-img]
 ![Git][Git-img]
 ![Github][GitHub-img]
 ![Markdown][Markdown-img]

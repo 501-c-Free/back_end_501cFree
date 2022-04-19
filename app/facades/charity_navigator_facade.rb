@@ -9,10 +9,6 @@ class CharityNavigatorFacade
 
     def self.one_charity(ein)
         charity = CharityNavigatorService.one_charity(ein)
-        if charity[:errorMessage]
-            {error: 'not found'}
-        else 
-            NGO.new(charity) 
-        end
+        NGO.new(charity)
     end
 end

@@ -4,7 +4,7 @@ class NGO
         if data[:errorMessage].present?
             @error = true
         else 
-            @mission = data[:mission] unless data[:mission].nil?
+            @mission = data[:mission]
             @charity_info_url = data[:charityNavigatorURL]
             @tagline = data[:tagLine]
             @website_url = data[:websiteURL]

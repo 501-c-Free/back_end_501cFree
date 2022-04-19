@@ -18,8 +18,8 @@ class Api::V1::NonProfitsController < ApplicationController
             non_profit.charity_info_url = charity.charity_info_url
             non_profit.country = charity.country
             non_profit.save
-            render json: CharityNavigatorFacade.one_charity(params[:ein])
-        elsif charity.error  
+            render json: charity
+        elsif charity.error
             render json: {error: 'not found'}
         end
     end

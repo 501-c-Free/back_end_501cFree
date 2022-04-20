@@ -24,8 +24,15 @@ class Api::V1::NonProfitsController < ApplicationController
         end
     end
 
-    def show 
+    def update
+      binding.pry
+      np = NonProfit.find(params[:id])
+      np.update!(calendly: params[:calendly])
+      render json: NonProfitProjectsSerializer.new(np)
+    end
+
+    def show
         render json: NonProfitProjectsSerializer.new(User.find(params[:id]).non_profit)
-        
+
     end
 end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         resources :projects
         resources :non_profits
         get '/developer/:id/projects', to: "developers#projects"
+        get '/developer/', to: "developers#index"
         get '/developer/:id/', to: "developers#show"
     end
   end

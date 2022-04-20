@@ -22,6 +22,13 @@ RSpec.describe 'sessions' do
             expect(Developer.first.name).to eq('Johnny Appleseed')
             expect(Developer.first.email).to eq('test@yahoo.com')
         end
+        it 'can add a linkedin and github to a developer account' do 
+            post "/api/v1/log_in", params: {email: 'test@yahoo.com', name: 'Johnny Appleseed'}
+            post '/api/v1/create_developer', params: {user_id: User.first.id, type_of_user: 'developer'}
+            post '/api/v1/create_developer', params: {user_id: User.first.id, github: 'github.com/user', linkedin: 'linkedin.com/user'}
+            expect(Developer.first.github).to eq('github.com/user')
+            expect(Developer.first.linkedin).to eq('linkedin.com/user')
+        end
     end
     describe 'creating a nonprofit' do 
         it 'will create a nonprofit attached to user' do 

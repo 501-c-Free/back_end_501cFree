@@ -24,5 +24,18 @@ RSpec.describe 'developer requests' do
         response_info = JSON.parse(response.body, symbolize_names: true)
         expect(response_info[:data][:attributes][:projects].first).to include(:id, :project_name, :description, :non_profit_id)
     end
+    it 'will return all developers in the database' do 
+        user_1 = User.create!(name: 'user 1', email: 'email1@email.com', type_of_user: 'developer')
+        developer_1 = Developer.create!(name: user_1.name, email: user_1.email)
+        user_1.developer_id = developer_1.id
+        user_2 = User.create!(name: 'user 2', email: 'email2@email.com',type_of_user: 'developer')
+        developer_2 = Developer.create!(name: user_2.name, email: user_2.email)
+        user_2.developer_id = developer_2.id
+        get '/api/v1/developer'
+        response_info = JSON.parse(response.body, symbolize_names: true)
+        expect(response_info[:data].length).to eq(2)
+        expect(response_info[:type]) == 'developer'
+        expect(response_info[:data].first[:attributes]).to include(:name, :email, :github, :linkedin)
+    end
 
 end

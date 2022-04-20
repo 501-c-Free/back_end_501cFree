@@ -1,4 +1,4 @@
-class CharityNavigatorService 
+class CharityNavigatorService
     def self.conn
     Faraday.new(
         url: "https://api.data.charitynavigator.org/v2/",
@@ -10,7 +10,7 @@ class CharityNavigatorService
         response = conn.get("organizations?search=#{search}")
         json = JSON.parse(response.body, symbolize_names: true)
     end
-    
+
     def self.one_charity(ein)
         response = conn.get("organizations/#{ein}")
         json = JSON.parse(response.body, symbolize_names: true)

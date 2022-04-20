@@ -6,7 +6,10 @@ Rails.application.routes.draw do
         delete :logout, to: "sessions#logout" 
         get :logged_in, to: "sessions#logged_in"
         post :log_in, to: "sessions#create"
+        resources :projects
         resources :non_profits
+        get '/developer/:id/projects', to: "developers#projects"
+        get '/developer/:id/', to: "developers#show"
     end
   end
 end

@@ -25,6 +25,7 @@ class Api::V1::NonProfitsController < ApplicationController
     end
 
     def show 
-        render json: User.find(params[:id]).non_profit
+        render json: NonProfitProjectsSerializer.new(User.find(params[:id]).non_profit)
+        
     end
 end

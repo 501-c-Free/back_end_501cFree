@@ -10,7 +10,7 @@ RSpec.describe CharityNavigatorFacade do
         it 'will have the necessary attributes' do 
             facade = CharityNavigatorFacade.search_charities('Red')
             expect(facade.first.mission).to be nil
-            expect(facade.first.charity_info_url).to eq("https://www.charitynavigator.org/?bay=search.profile&ein=270823236&utm_source=DataAPI&utm_content=6bc9f3c8")
+            expect(facade.first.charity_info_url).to eq("https://www.charitynavigator.org/?bay=search.profile&ein=270823236&utm_source=DataAPI&utm_content=9989397e")
             expect(facade.first.tagline).to be nil
             expect(facade.first.website_url).to be nil
             expect(facade.first.charity_name).to eq("Red Oak Chamber And Industry Association Inc")
@@ -25,7 +25,7 @@ RSpec.describe CharityNavigatorFacade do
         it 'will return all the data for one charity given a EIN', :vcr do 
             facade = CharityNavigatorFacade.one_charity('270823236')
             expect(facade.mission).to be nil
-            expect(facade.charity_info_url).to eq("https://www.charitynavigator.org/?bay=search.profile&ein=270823236&utm_source=DataAPI&utm_content=6bc9f3c8")
+            expect(facade.charity_info_url).to eq("https://www.charitynavigator.org/?bay=search.profile&ein=270823236&utm_source=DataAPI&utm_content=9989397e")
             expect(facade.tagline).to be nil
             expect(facade.website_url).to be nil
             expect(facade.charity_name).to eq("Red Oak Chamber And Industry Association Inc")

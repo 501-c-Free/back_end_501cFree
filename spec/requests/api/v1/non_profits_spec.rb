@@ -41,7 +41,6 @@ RSpec.describe 'non profit requests' do
         post '/api/v1/projects', params: {project_name: 'name2', description: 'project description2', user_id: User.first.id}
         get "/api/v1/non_profits/#{User.last.id}"
         response_info = JSON.parse(response.body, symbolize_names: true)
-        binding.pry
         expect(response_info[:data][:attributes][:projects].length).to eq(2)
     end
 end

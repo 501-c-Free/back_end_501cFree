@@ -8,6 +8,8 @@ Rails.application.routes.draw do
         post :log_in, to: "sessions#create"
         resources :projects
         resources :non_profits
+        get '/developer/:id/projects', to: "developers#projects"
+        get '/developer/:id/', to: "developers#show"
     end
   end
 end

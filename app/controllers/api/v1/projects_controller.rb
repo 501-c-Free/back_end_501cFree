@@ -1,8 +1,8 @@
 class Api::V1::ProjectsController < ApplicationController
 
     def index 
-        options = {include: [:non_profit]}
-        render json: ProjectsSerializer.new(Project.all, options)
+        # options = {include: [:non_profit]}
+        render json: ProjectSerializer.new(Project.all)
     end
     def create 
         user_nonprofit = User.find(params[:user_id]).non_profit
@@ -12,6 +12,6 @@ class Api::V1::ProjectsController < ApplicationController
     
     def show 
         options = {include: [:non_profit, :developers]}
-        render json: ProjectsSerializer.new(Project.find(params[:id]), options)
+        render json: ProjectSerializer.new(Project.find(params[:id]))
     end
 end

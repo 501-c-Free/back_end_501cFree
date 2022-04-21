@@ -29,9 +29,7 @@ RSpec.describe 'Projects requests' do
         ProjectDeveloper.create(developer: developer_2, project: @project_1)
         get "/api/v1/projects/#{@project_1.id}"
         response_info = JSON.parse(response.body, symbolize_names: true)
-        expect(response_info[:included].first[:attributes][:name]).to eq('user 1')
-        expect(response_info[:included].second[:attributes][:name]).to eq('user 2')
-        expect(response_info[:included].third[:attributes][:non_profit_name]).to eq('rep')
-    
+        expect(response_info[:data][:attributes][:project_name]).to eq('my first project')
+        expect(response_info[:data][:attributes][:developers].first).to include(:id, :name, :email, :github, :linkedin)    
     end
 end

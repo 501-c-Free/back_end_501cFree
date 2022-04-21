@@ -15,4 +15,7 @@ class ProjectSerializer
       charity_id: object.non_profit.id
     }
   end
+  attributes :project_owner do |object| 
+    {user: object.non_profit.user.id}
+  end
 end

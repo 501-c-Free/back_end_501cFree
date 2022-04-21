@@ -11,7 +11,17 @@ class Api::V1::ProjectsController < ApplicationController
     end
     
     def show 
-        options = {include: [:non_profit, :developers]}
         render json: ProjectSerializer.new(Project.find(params[:id]))
+    end
+
+    def update 
+        developer = Developer.find(params[:developer_id])
+        project = Project.find(params[:id])
+        project.project_name = params[:name]
+        project.description = params[:description]
+        project.description = params[:description]
+        project.save
+        ProjectDeveloper.create!(project: project, developer: developer)
+        render json: {status: :updated}
     end
 end

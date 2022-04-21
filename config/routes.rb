@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         get '/developer/:id/projects', to: "developers#projects"
         get '/developer/', to: "developers#index"
         get '/developer/:id/', to: "developers#show"
+        patch '/developer/:id/', to: "developers#update"
     end
   end
 end

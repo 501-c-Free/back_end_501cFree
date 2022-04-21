@@ -15,13 +15,17 @@ class Api::V1::ProjectsController < ApplicationController
     end
 
     def update 
-        developer = Developer.find(params[:developer_id])
         project = Project.find(params[:id])
         project.project_name = params[:name]
         project.description = params[:description]
         project.description = params[:description]
         project.save
-        ProjectDeveloper.create!(project: project, developer: developer)
+        if params[:developer_id] != ""
+            developer = Developer.find(params[:developer_id])
+            if project.developers.include?(developer) == false 
+                ProjectDeveloper.create!(project: project, developer: developer)
+            end
+        end
         render json: {status: :updated}
     end
 end

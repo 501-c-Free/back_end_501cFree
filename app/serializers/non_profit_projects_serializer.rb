@@ -23,8 +23,12 @@ class NonProfitProjectsSerializer
     object.projects.each do |project|
       {
         project_name: project.project_name,
-        project_description: project.description
+        project_description: project.description,
+        project_id: project.id
       }
     end
+  end
+  attributes :user_owner do |object| 
+    {user: object.user.id}
   end
 end

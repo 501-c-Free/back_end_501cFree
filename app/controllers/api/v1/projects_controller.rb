@@ -18,7 +18,6 @@ class Api::V1::ProjectsController < ApplicationController
         project = Project.find(params[:id])
         project.project_name = params[:name]
         project.description = params[:description]
-        project.description = params[:description]
         project.save
         if params[:developer_id] != ""
             developer = Developer.find(params[:developer_id])
